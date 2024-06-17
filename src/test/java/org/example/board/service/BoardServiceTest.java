@@ -37,4 +37,14 @@ public class BoardServiceTest {
     }
 
 }
+
+@Test
+    public void testUpdate() {
+
+        Long bon = 100L;
+
+        BoardDTO boardDTO = boardService.get(bon);
+
+        System.out.println(boardDTO);
+}
 }

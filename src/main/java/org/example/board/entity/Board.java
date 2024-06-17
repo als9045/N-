@@ -20,4 +20,11 @@ public class Board extends baseEntity {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Member writer;
+
+    public void changeTitle(String title) {
+        this.title = title;
+    }
+    public  void changeContent(String content) {
+        this.content = content;
+    }
 }
