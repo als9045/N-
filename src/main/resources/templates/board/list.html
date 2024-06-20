@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Board List Page</title>
+    <!-- 필요한 CSS 및 JS 파일 추가 -->
+</head>
+<body>
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+
+    <th:block th:fragment="content">
+
+        <h1 class="mt-4">Board List Page
+            <span>
+                    <a th:href="@{/board/register}">
+                        <button type="button" class="btn btn-outline-primary">REGISTER
+                        </button>
+                    </a>
+                </span>
+        </h1>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Writer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="dto : ${result.dtoList}">
+                <th scope="row">
+                    <a th:href="@{/board/read(bno=${dto.bno}, page=${result.page}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
+                        [[${dto.bno}]]
+                    </a>
+                </th>
+                <td>[[${dto.title}]] <small>[<b th:text="${dto.replyCount}"></b>]</small></td>
+                <td>[[${dto.writerName}]] <small>[[${dto.writerEmail}]]</small></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </th:block>
+
+</th:block>
+</body>
+</html>
